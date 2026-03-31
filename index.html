@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Las Recetas de Naty</title>
+    <!-- Modern Typeface -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    
+    <div class="app-container">
+        
+        <!-- ============================== -->
+        <!-- VIEW: Home (Portada)           -->
+        <!-- ============================== -->
+        <section id="view-home" class="view active">
+            <div class="hero-container">
+                <img src="logo_principal.png" alt="Las Recetas de Naty" class="logo-principal" id="btn-enter-app" onerror="this.src='https://placehold.co/400x400/1e1b4b/06b6d4?text=Recetas+de+Naty'">
+                <h1 class="glow-text">Las Recetas de Naty</h1>
+                <p>Descubre y comparte la magia culinaria.</p>
+                <div class="pulse-ring"></div>
+            </div>
+        </section>
+
+        <!-- ============================== -->
+        <!-- VIEW: Login / Register         -->
+        <!-- ============================== -->
+        <section id="view-auth" class="view hidden">
+            <div class="glass-card auth-card">
+                <div class="auth-tabs">
+                    <button class="tab-btn active" onclick="switchAuthTab('login')">Ingresar</button>
+                    <button class="tab-btn" onclick="switchAuthTab('register')">Registrarse</button>
+                </div>
+                
+                <!-- Login Form -->
+                <form id="form-login" class="auth-form">
+                    <h2>Bienvenido</h2>
+                    <div class="input-group">
+                        <label for="login-user">Usuario / Teléfono</label>
+                        <input type="text" id="login-user" required placeholder="Tu usuario">
+                    </div>
+                    <div class="input-group">
+                        <label for="login-pass">Contraseña</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="login-pass" required placeholder="••••••••">
+                            <button type="button" class="btn-toggle-pass" onclick="togglePassword('login-pass')">O</button>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary">Entrar al Sistema</button>
+                </form>
+
+                <!-- Register Form -->
+                <form id="form-register" class="auth-form hidden">
+                    <h2>Nuevo Acceso</h2>
+                    <div class="input-group">
+                        <label for="reg-nombre">Nombre y Apellido</label>
+                        <input type="text" id="reg-nombre" required placeholder="Ej. Juan Pérez">
+                    </div>
+                    <div class="input-group">
+                        <label for="reg-tel">Teléfono</label>
+                        <input type="tel" id="reg-tel" required placeholder="Ej. 1123456789">
+                    </div>
+                    <div class="input-group">
+                        <label for="reg-dir">Dirección</label>
+                        <input type="text" id="reg-dir" required placeholder="Calle y Nro">
+                    </div>
+                    <div class="input-group">
+                        <label for="reg-pass">Contraseña</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="reg-pass" required placeholder="Crea una clave segura">
+                            <button type="button" class="btn-toggle-pass" onclick="togglePassword('reg-pass')">O</button>
+                        </div>
+                    </div>
+                    <div class="input-group special-group">
+                        <label for="reg-super-code">Código de Admin (Opcional)</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="reg-super-code" placeholder="Código secreto">
+                            <button type="button" class="btn-toggle-pass" onclick="togglePassword('reg-super-code')">O</button>
+                        </div>
+                        <small>Solo si deseas ser Administrador.</small>
+                    </div>
+                    <button type="submit" class="btn-primary" id="btn-submit-register">Registrar Usuario</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- ============================== -->
+        <!-- VIEW: Dashboard (Main App)     -->
+        <!-- ============================== -->
+        <section id="view-dashboard" class="view hidden">
+            <header class="glass-header">
+                <h2>Las Recetas de Naty</h2>
+                <div class="user-controls">
+                    <span id="user-greeting">Hola, Invitado</span>
+                    <button class="btn-icon" onclick="logout()" title="Cerrar Sesión">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                    </button>
+                </div>
+            </header>
+            
+            <main class="dashboard-content">
+                <!-- Zona superior: Búsqueda y Botón de Admin -->
+                <div class="action-bar">
+                    <div class="search-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <input type="text" id="search-input" placeholder="Buscar por receta o ingrediente...">
+                    </div>
+                    <!-- Botón oculto por defecto, se muestra solo a admins -->
+                    <button id="btn-new-recipe" class="btn-primary btn-add hidden" onclick="openRecipeModal()">
+                        + Nueva Receta
+                    </button>
+                </div>
+
+                <!-- Contenedor del listado de recetas -->
+                <div id="recipes-grid" class="recipes-grid">
+                    <!-- Cards will be dynamically injected here -->
+                    <div class="loading-state">
+                        <div class="spinner"></div>
+                        <p>Cargando sabores...</p>
+                    </div>
+                </div>
+            </main>
+        </section>
+
+    </div>
+
+    <!-- ============================== -->
+    <!-- MODAL: ADD RECIPE (Admin Only)  -->
+    <!-- ============================== -->
+    <div id="modal-recipe" class="modal-overlay hidden">
+        <div class="glass-card modal-content window-anim">
+            <button class="btn-close" onclick="closeRecipeModal()">×</button>
+            <h3>Agregar Nueva Receta</h3>
+            <form id="form-recipe">
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="rec-name">Nombre de la Receta</label>
+                        <input type="text" id="rec-name" required placeholder="Ej. Tarta de Manzana">
+                    </div>
+                </div>
+                
+                <div class="form-row photo-upload-row">
+                    <div class="input-group">
+                        <label>Foto de la Receta (Requerido)</label>
+                        <div class="upload-area" id="upload-area" onclick="document.getElementById('rec-photo').click()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                            <span id="upload-text">Clic para subir imagen</span>
+                            <img id="preview-img" class="hidden">
+                        </div>
+                        <input type="file" id="rec-photo" accept="image/*" class="hidden" onchange="previewImage(this)">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Ingredientes</label>
+                    <div id="ingredients-list" class="ingredients-list">
+                        <!-- dynamic ingredients -->
+                    </div>
+                    <div class="add-ingredient-row">
+                        <input type="text" id="ing-name" placeholder="Nombre (ej. Harina)">
+                        <input type="text" id="ing-qty" placeholder="Cant. (ej. 200g)">
+                        <button type="button" class="btn-secondary" onclick="addIngredient()">Añadir</button>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="rec-instructions">Preparación / Instrucciones</label>
+                    <textarea id="rec-instructions" rows="4" required placeholder="Paso a paso..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary w-full" id="btn-save-recipe">Guardar en Drive</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- ============================== -->
+    <!-- MODAL: VIEW RECIPE             -->
+    <!-- ============================== -->
+    <div id="modal-view-recipe" class="modal-overlay hidden">
+        <div class="glass-card modal-content window-anim" style="max-width: 800px;">
+            <button class="btn-close" onclick="closeViewRecipeModal()">×</button>
+            <div id="view-recipe-content" class="view-recipe-layout">
+                <!-- Se inyecta dinámicamente -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">Mensaje del sistema</div>
+
+    <script src="main.js"></script>
+</body>
+</html>
