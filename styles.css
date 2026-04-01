@@ -63,6 +63,36 @@ body {
     100% { transform: translateY(30px) scale(1.1); }
 }
 
+/* Background Pattern layers */
+.bg-pattern-base, .bg-pattern-interactive {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('bg-pattern.svg');
+    background-repeat: repeat;
+    background-size: 300px 300px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.bg-pattern-base {
+    opacity: 0.04;
+}
+
+.bg-pattern-interactive {
+    opacity: 0.9;
+    filter: drop-shadow(0 0 4px #00ff41);
+    -webkit-mask-image: radial-gradient(
+        220px circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px), 
+        black 10%, 
+        transparent 100%
+    );
+    mask-image: radial-gradient(
+        220px circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px), 
+        black 10%, 
+        transparent 100%
+    );
+}
+
 /* Base Utility Classes */
 .hidden { display: none !important; }
 .view {
@@ -190,6 +220,12 @@ input:focus, textarea:focus {
     justify-content: center;
     height: 100vh;
     text-align: center;
+    position: relative;
+}
+
+.hero-container > * {
+    position: relative;
+    z-index: 1;
 }
 
 .logo-principal {

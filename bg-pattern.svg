@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+    <g opacity="1" stroke="#00ff41" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <!-- Chef Hat -->
+        <g transform="translate(20, 30) scale(1.5) rotate(-15)">
+            <path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/><line x1="6" y1="17" x2="18" y2="17"/>
+        </g>
+        <!-- Utensils -->
+        <g transform="translate(140, 20) scale(1.2) rotate(20)">
+            <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>
+        </g>
+        <!-- Coffee -->
+        <g transform="translate(240, 60) scale(1.4) rotate(-10)">
+            <path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/>
+        </g>
+        <!-- Flame -->
+        <g transform="translate(60, 120) scale(1.6) rotate(10)">
+            <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+        </g>
+        <!-- Apple -->
+        <g transform="translate(180, 110) scale(1.3) rotate(-25)">
+            <path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"/><path d="M10 2c1 .5 2 2 2 5"/>
+        </g>
+        <!-- Wine -->
+        <g transform="translate(30, 220) scale(1.5) rotate(15)">
+            <path d="M8 22h8"/><path d="M7 10h10"/><path d="M12 15v7"/><path d="M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5Z"/>
+        </g>
+        <!-- Pizza -->
+        <g transform="translate(130, 200) scale(1.8) rotate(-15)">
+            <path d="M15 11h.01"/><path d="M11 15h.01"/><path d="M16 16h.01"/><path d="m2 16 20 6-6-20A20 20 0 0 0 2 16Z"/><path d="M5.71 17.11a17.04 17.04 0 0 1 11.4-11.4"/>
+        </g>
+        <!-- Bowl -->
+        <g transform="translate(230, 230) scale(1.3) rotate(5)">
+            <path d="M12 20a9.04 9.04 0 0 0 9-9H3a9.04 9.04 0 0 0 9 9Z"/><path d="M22 11c0-4-3-7-3-7H5s-3 3-3 7"/>
+        </g>
+        <!-- Ice Cream -->
+        <g transform="translate(90, 70) scale(1.1) rotate(25)">
+            <path d="m7 11 4.08 10.35a1 1 0 0 0 1.84 0L17 11"/><path d="M17 7A5 5 0 0 0 7 7"/><path d="M17 7a2 2 0 0 1 0 4H7a2 2 0 0 1 0-4"/>
+        </g>
+        <!-- Croissant (approx) / Bread -->
+        <g transform="translate(250, 140) scale(1.4) rotate(-35)">
+            <ellipse cx="12" cy="12" rx="10" ry="6"/>
+            <path d="M6 9c2-2 6-2 8 0"/><path d="M4 12c4-3 10-3 14 0"/><path d="M7 15c2 1 6 1 8 0"/>
+        </g>
+        <!-- Rolling Pin -->
+        <g transform="translate(160, 260) scale(1.4) rotate(-10)">
+            <rect x="4" y="10" width="16" height="4" rx="2"/><rect x="2" y="11" width="2" height="2"/><rect x="20" y="11" width="2" height="2"/>
+        </g>
+        <!-- Whisk -->
+        <g transform="translate(20, 140) scale(1.4) rotate(40)">
+            <path d="M12 21v-4"/><path d="M12 21v-4"/><path d="M15 17c0-2.5-3-5-3-8s-2-8-2-8-2 5-2 8 3 5.5 3 8"/><path d="M13.5 17c0-2-2-4-2-7"/><path d="M10.5 17c0-2 2-4 2-7"/><path d="M10 23h4"/>
+        </g>
+    </g>
+</svg>
