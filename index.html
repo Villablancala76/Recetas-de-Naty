@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Las Recetas de Naty</title>
+    <link rel="icon" href="icon.ico" type="image/x-icon">
     <!-- Modern Typeface -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
@@ -12,8 +13,6 @@
     <!-- Background Elements -->
     <div class="glow glow-1"></div>
     <div class="glow glow-2"></div>
-    <div class="bg-pattern-base"></div>
-    <div class="bg-pattern-interactive"></div>
     
     <div class="app-container">
         
@@ -27,8 +26,7 @@
                 <img src="logo_principal.png" alt="Las Recetas de Naty" class="logo-principal" id="btn-enter-app" onerror="this.src='https://placehold.co/400x400/1e1b4b/06b6d4?text=Recetas+de+Naty'">
                 <p>Descubre y comparte la magia culinaria.</p>
 		<h1 class="glow-text">Las Recetas de Naty</h1>
-              	
-                <p>¡La Comida más rica, es la de mamá!.</p>
+              	<p>¡La Comida más rica, es la de mamá!.</p>
                 <div class="pulse-ring"></div>
             </div>
         </section>
@@ -58,6 +56,30 @@
                         </div>
                     </div>
                     <button type="submit" class="btn-primary">Entrar al Sistema</button>
+                    <button type="button" class="link-button" onclick="showPasswordRecovery()">Olvidé mi contraseña</button>
+                </form>
+
+                <!-- Password recovery form -->
+                <form id="form-recovery" class="auth-form hidden">
+                    <h2>Recuperar acceso</h2>
+                    <p class="form-help">Confirma tu usuario y teléfono registrados para crear una nueva clave.</p>
+                    <div class="input-group">
+                        <label for="recovery-user">Usuario</label>
+                        <input type="text" id="recovery-user" required placeholder="Tu nombre de usuario">
+                    </div>
+                    <div class="input-group">
+                        <label for="recovery-tel">Teléfono registrado</label>
+                        <input type="tel" id="recovery-tel" required placeholder="Tu teléfono">
+                    </div>
+                    <div class="input-group">
+                        <label for="recovery-pass">Nueva contraseña</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="recovery-pass" required minlength="6" placeholder="Mínimo 6 caracteres">
+                            <button type="button" class="btn-toggle-pass" onclick="togglePassword('recovery-pass')">O</button>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary">Restablecer contraseña</button>
+                    <button type="button" class="link-button" onclick="showLoginForm()">Volver a ingresar</button>
                 </form>
 
                 <!-- Register Form -->
